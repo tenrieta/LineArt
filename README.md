@@ -1,2 +1,2 @@
 # LineArt
-Final Project for university - bachelor
+Final Project for university - bachelor "Computer science"
