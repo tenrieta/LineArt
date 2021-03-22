@@ -26,8 +26,51 @@
     <p>We have also added a media query for screens that are 400px or less, which will vertically stack and
         center
         the navigation links.</p>
-    <button onclick="downloadPNG()">Save as SVG File</button>
+    <button onclick="downloadPNG()">Save as PNG File</button>
     <script src="objects.js"></script>
+
+    <h1>Range Slider Picture</h1>
+
+    <div class="slidecontainer">
+        <p>Sides:</p>
+        <input type="range" min="0" max="100" value="50" class="slider" oninput="loadValue(this, 0)">
+        <span class="slider-value"></span>
+        <p>Weight:</p>
+        <input type="range" min="0" max="100" value="50" class="slider" oninput="loadValue(this, 1)">
+        <span class="slider-value"></span>
+        <p>Radius:</p>
+        <input type="range" min="0" max="100" value="50" class="slider" oninput="loadValue(this, 2)">
+        <span class="slider-value"></span>
+        <p>Angle:</p>
+        <input type="range" min="0" max="100" value="50" class="slider" oninput="loadValue(this, 3)">
+        <span class="slider-value"></span>
+        <p>Color:</p>
+        <input type="range" min="0" max="100" value="50" class="slider" oninput="loadValue(this, 4)">
+        <span class="slider-value"></span>
+        <p>X-position:</p>
+        <input type="range" min="0" max="100" value="50" class="slider" oninput="loadValue(this, 5)">
+        <span class="slider-value"></span>
+        <p>Y-position:</p>
+        <input type="range" min="0" max="100" value="50" class="slider" oninput="loadValue(this, 6)">
+        <span class="slider-value"></span>
+    </div>
+
+    <script>
+    var sliderCount = document.getElementsByClassName("slider").length;
+    var slider = new Array();
+    let output = new Array();
+    for (var i = 0; i < sliderCount; i++) {
+
+        slider.push(document.getElementsByClassName("slider").item(i));
+        output[i] = document.getElementsByClassName("slider-value").item(i);
+        output[i].innerHTML = slider[i].value;
+    }
+
+    function loadValue(t, idx) {
+        console.log(t.value + idx);
+        output[idx].innerHTML = t.value;
+    }
+    </script>
 </body>
 
 </html>

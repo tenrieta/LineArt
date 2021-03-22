@@ -1,3 +1,7 @@
+/*window.onload = function () {
+    document.getElementById("slidercontainer").style.display = "block";
+}*/
+
 function setup() {
     let c = createCanvas(850, 400);
     //saveCanvas(c, 'myCanvas', 'jpg')
@@ -74,3 +78,5 @@ function sendSVG() {
     form.submit();
     console.log(form);
 }
+
+/*SLIDER move value*/
