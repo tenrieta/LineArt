@@ -10,6 +10,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.2.0/addons/p5.sound.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+    <script type="text/javascript" src="interface.js"></script>
 </head>
 
 <body>
@@ -27,7 +28,7 @@
         center
         the navigation links.</p>
     <button onclick="downloadPNG()">Save as PNG File</button>
-    <script src="objects.js"></script>
+
 
     <h1>Range Slider Picture</h1>
 
@@ -54,9 +55,11 @@
         <input type="range" min="0" max="100" value="50" class="slider" oninput="loadValue(this, 6)">
         <span class="slider-value"></span>
     </div>
-
+    <script src="objects.js">
+    </script>
     <script>
     var sliderCount = document.getElementsByClassName("slider").length;
+    console.log(sliderCount + "slidercnt");
     var slider = new Array();
     let output = new Array();
     for (var i = 0; i < sliderCount; i++) {
@@ -65,10 +68,13 @@
         output[i] = document.getElementsByClassName("slider-value").item(i);
         output[i].innerHTML = slider[i].value;
     }
+    testt = 12;
 
     function loadValue(t, idx) {
-        console.log(t.value + idx);
+        console.log(t.value + "IDX:" + idx);
         output[idx].innerHTML = t.value;
+        testt = t.value;
+        console.log(testt);
     }
     </script>
 </body>

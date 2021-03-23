@@ -11,8 +11,8 @@ function setup() {
 
 function draw() {
     background(160);
-
-    call(0.5, 0.5, 0, 0, 72, 3, 8);
+    console.log(testt);
+    call(0.5, 0.5, 0, 0, testt, 3, 8);
     //save();
     noLoop();
     call(0.3, 0.5, 0, 0, 80, 5, 4);
