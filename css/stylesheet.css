@@ -3,6 +3,7 @@
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
+    background-color: rgba(68, 67, 67, 0.699);
 }
 
 ul.sidenav {
@@ -71,11 +72,9 @@ div.content {
   
   /* Add padding to containers */
   .container {
-    padding-left: 30%;
-    padding-right: 30%;
+    padding-left: 4%;
     padding-top: 1%;
     padding-bottom: 1%;
-    background-color: white;
   }
   
   /* Full-width input fields */
@@ -133,9 +132,11 @@ div.content {
 
   .slidecontainer {
     width: 20%;
+    height: 10%;
     position: absolute; 
     right: 0;
     padding-right: 30px;
+    top: 10%;
   }
   
   .slider {
@@ -170,4 +171,20 @@ div.content {
     border-radius: 50%;
     background: #4CAF50;
     cursor: pointer;
+  }
+
+  #figure-canvas
+  {
+    float:left;
+    position: absolute !important; 
+    top: 22%;
+    padding-left: 100 px;
+    border:solid;
+    width: 950px;
+    height: 550px;
+  }
+
+  .slidecontainer{
+    float:left;
+    color:honeydew;
   }

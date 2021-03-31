@@ -23,7 +23,16 @@
     </ul>
     <div class="container">
         <h2>Create your own object</h2>
+        <p>This example use media queries to transform the sidenav to a top navigation bar when the screen size is
+            900px
+            or less.</p>
+        <p>We have also added a media query for screens that are 400px or less, which will vertically stack and
+            center
+            the navigation links.</p>
         <button id="btndownload">Save as PNG File</button>
+
+
+        <h1>Range Slider Picture</h1>
         <div id="figure-canvas"></div>
         <form action="/" method="post" enctype="multipart/form-data" id="form">
             <div class="slidecontainer">
@@ -34,7 +43,7 @@
                 <input type="range" min="0" max="100" value="50" class="slider" oninput="loadValue(this, 1)">
                 <span class="slider-value"></span>
                 <p>Radius:</p>
-                <input type="range" min="0" max="30" value="20" step="0.5" class="slider" oninput="loadValue(this, 2)">
+                <input type="range" min="0" max="100" value="50" class="slider" oninput="loadValue(this, 2)">
                 <span class="slider-value"></span>
                 <p>Quantity:</p>
                 <input type="range" min="0" max="100" value="50" class="slider" oninput="loadValue(this, 3)">
@@ -43,10 +52,10 @@
                 <input type="range" min="0" max="100" value="50" class="slider" oninput="loadValue(this, 4)">
                 <span class="slider-value"></span>
                 <p>X-position:</p>
-                <input type="range" min="0" max="1" step="0.1" value="0.5" class="slider" oninput="loadValue(this, 5)">
+                <input type="range" min="0" max="100" value="50" class="slider" oninput="loadValue(this, 5)">
                 <span class="slider-value"></span>
                 <p>Y-position:</p>
-                <input type="range" min="0" max="1" step="0.1" value="0.5" class="slider" oninput="loadValue(this, 6)">
+                <input type="range" min="0" max="100" value="50" class="slider" oninput="loadValue(this, 6)">
                 <span class="slider-value"></span>
                 <div id="sliderAmount"></div>
             </div>
@@ -65,13 +74,13 @@
     }
 
     let testt = 12;
-    let sides = 2;
-    let weight = 2;
-    let radius = 180;
-    let nobjects = 20;
+    let sides = 3;
+    let weight = 0;
+    let radius = 10;
+    let nobjects = 0;
     let color = 0;
-    let xPos = 0.5;
-    let yPos = 0.5;
+    let xPos = 0;
+    let yPos = 0;
 
 
     function loadValue(t, idx) {

@@ -9,3 +9,19 @@ xhr.onreadystatechange = function () {
     }
 }
 xhr.send();*/
+/*
+$(document).ready(function () {
+
+    $(document).on('.onchange', '.refresher', function () {
+        $.ajax({
+            url: 'index.html',
+            method: "GET",
+            dataType: 'json',
+            success: function (response) {
+                $('#rect').html(response);
+            }
+        });
+    });
+
+});
+*/
