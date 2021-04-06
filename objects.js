@@ -61,8 +61,9 @@ function displayFigures() {
 
         p.draw = function () {
             p.background(124);
-            console.log("W" + weight + "Pos " + "X" + xPos + "Y " + yPos + "R " + radius + "Points " + nobjects + "Sides" + sides);
-            call(xPos, yPos, 0, 0, radius, sides, nobjects, weight, color);
+            console.log("W" + weight + "Pos " + "X" + xPos + "Y " + yPos + "R " + radius + "Points " + nobjects + "Sides" + sides + "Spread" + spread);
+
+            call(xPos, yPos, 0, 0, radius, sides, nobjects, weight, colorR, colorG, colorB, spread, rotateVal);
             //save();
             p.noLoop();
             //call(0.3, 0.5, 0, 0, 80, 5, 4);
@@ -70,26 +71,30 @@ function displayFigures() {
             //call(0.7, 0.5, 0, 0, 10, 14, 5);
             //call(0.9, 0.5, 0, 0, 70, 4, 3);
         }
-        function call(w, h, x, y, radius, nobjects, sides, weight, color) {
+        function call(w, h, x, y, radius, nobjects, sides, weight, colorR, colorG, colorB, spread, rotateVal) {
             p.push();
+            //position of figure
             p.translate(p.width * w, p.height * h);
-            p.rotate(p.frameCount / 100.0);
+            //rotation by x
+            p.rotate(rotateVal);
 
             for (var i = 1; i <= sides; i++) {
 
                 p.noFill();
                 //color
-                p.stroke(10, color, 40);
+                p.stroke(colorR, colorG, colorB);
                 //weight
                 p.strokeWeight(weight);
 
-                //angleMode(DEGREES); // Change the mode to DEGREES
+                //p.angleMode(p.DEGREES); // Change the mode to DEGREES
                 let a = p.atan(p.PI + p.PI / 3.0);
-                //translate(w / 2, h / 2);
+                //spread of figures
+                p.translate(spread, -spread);
                 p.push();
                 p.rotate(a);
+
                 console.log(radius);
-                polygon(x, y, i + radius, nobjects);
+                polygon(x, y, i + radius, nobjects);//i for rotate position of figure
             }
             p.pop();
         }
@@ -109,29 +114,8 @@ function displayFigures() {
     figures.push(f);
 };
 
-//debugger;
-
 $(document).on("change", function () {
     displayFigures();
-
-    /*function sendSVG() {
-        var svgText = document.getElementById('download-svg').innerHTML;
-
-        var form = document.createElement("form");
-        form.setAttribute("method", "post");
-        form.setAttribute("action", "downloadSVG.php");
-        form.setAttribute("accept-charset", "UTF-8");
-
-        var hiddenSVGField = document.createElement("input");
-        hiddenSVGField.setAttribute("type", "hidden");
-        hiddenSVGField.setAttribute("name", "svgText");
-        hiddenSVGField.setAttribute("value", svgText);
-        console.log(hiddenSVGField);
-        form.appendChild(hiddenSVGField);
-        document.body.appendChild(form);
-        form.submit();
-        console.log(form);
-    }*/
 });
 
 
@@ -139,3 +123,27 @@ $(document).on("change", function () {
 $(document).ready(function () {
     displayFigures();
 });
+
+function uploadImage() {
+    //debugger;
+    var c0 = document.getElementById('defaultCanvas0');
+    var c1 = document.getElementById('defaultCanvas1');
+    var c = null;
+    if (c0 !== null) {
+        c = c0;
+    }
+    else {
+        c = c1;
+    }
+    var dataUrl = c.toDataURL();
+    console.log("DATA:" + c);
+
+    $.ajax({
+        type: "POST",
+        url: "http://localhost/LineArt/uploadImage.php",
+        data: { image: dataUrl }
+    })
+        .done(function (respond) { console.log("done: " + respond); })
+        .fail(function (respond) { console.log("fail"); })
+        .always(function (respond) { console.log("always"); })
+};

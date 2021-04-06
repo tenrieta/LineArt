@@ -132,11 +132,12 @@ div.content {
 
   .slidecontainer {
     width: 20%;
-    height: 10%;
+    height: 80%;
     position: absolute; 
     right: 0;
     padding-right: 30px;
     top: 10%;
+    overflow-y: auto;
   }
   
   .slider {
@@ -188,3 +189,20 @@ div.content {
     float:left;
     color:honeydew;
   }
+
+/*Collapse color*/
+
+.collapse{
+  cursor: pointer;
+  display: block;
+  background:black;
+}
+.collapse + input{
+  display: none; /* hide the checkboxes */
+}
+.collapse + input + div{
+  display:none;
+}
+.collapse + input:checked + div{
+  display:block;
+}
