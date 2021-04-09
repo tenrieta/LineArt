@@ -13,4 +13,5 @@
     $stmt->execute();
     $affected_rows = $stmt->rowCount();
     echo $affected_rows;
+
 ?>

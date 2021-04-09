@@ -46,7 +46,7 @@
                     <span class="slider-value"></span>
                 </div>
                 <p>Radius:</p>
-                <input type="range" min="0" max="30" value="20" step="0.5" class="slider" oninput="loadValue(this, 2)">
+                <input type="range" min="0" max="60" value="16" step="1" class="slider" oninput="loadValue(this, 2)">
                 <span class="slider-value"></span>
                 <p>Quantity:</p>
                 <input type="range" min="0" max="100" value="20" class="slider" oninput="loadValue(this, 3)">
@@ -83,6 +83,9 @@
                     <input type="range" min="0" max="100" value="1" class="slider" oninput="loadValue(this, 10)">
                     <span class="slider-value"></span>
                 </div>
+                <p>Background color:</p>
+                <input type="range" min="0" max="256" value="124" class="slider" oninput="loadValue(this, 11)">
+                <span class="slider-value"></span>
             </div>
         </form>
     </div>
@@ -100,7 +103,7 @@
 
     let sides = 2;
     let weight = 2;
-    let radius = 180;
+    let radius = 16;
     let nobjects = 20;
     let colorR = 0;
     let colorG = 0;
@@ -109,6 +112,7 @@
     let yPos = 0.5;
     let spread = 0;
     let rotateVal = 1.0;
+    let bgrcolor = 124;
 
     function loadValue(t, idx) {
         console.log(t.value + "IDX:" + idx);
@@ -146,6 +150,8 @@
                 yPos = t.value;
             case 10:
                 rotateVal = t.value;
+            case 11:
+                bgrcolor = t.value;
         }
     }
     </script>

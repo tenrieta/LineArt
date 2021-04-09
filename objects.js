@@ -60,7 +60,8 @@ function displayFigures() {
         }
 
         p.draw = function () {
-            p.background(124);
+            console.log(bgrcolor);
+            p.background(bgrcolor, bgrcolor, bgrcolor);
             console.log("W" + weight + "Pos " + "X" + xPos + "Y " + yPos + "R " + radius + "Points " + nobjects + "Sides" + sides + "Spread" + spread);
 
             call(xPos, yPos, 0, 0, radius, sides, nobjects, weight, colorR, colorG, colorB, spread, rotateVal);
@@ -93,8 +94,7 @@ function displayFigures() {
                 p.push();
                 p.rotate(a);
 
-                console.log(radius);
-                polygon(x, y, i + radius, nobjects);//i for rotate position of figure
+                polygon(x, y, i * radius, nobjects);//i for rotate position of figure
             }
             p.pop();
         }
@@ -136,7 +136,7 @@ function uploadImage() {
         c = c1;
     }
     var dataUrl = c.toDataURL();
-    console.log("DATA:" + c);
+    console.log("DATA:" + dataUrl);
 
     $.ajax({
         type: "POST",
@@ -147,3 +147,4 @@ function uploadImage() {
         .fail(function (respond) { console.log("fail"); })
         .always(function (respond) { console.log("always"); })
 };
+

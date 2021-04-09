@@ -38,9 +38,22 @@ include_once("config.php");
                 {
                     extract($row);
                     $base64string = $row['image'];
-                    ?>
-        <img src="<?php echo $base64string?>" style="width:260px; height:260px;"><br><br>
 
+                    //header('Content-Type: image/png');
+
+                    //$data = base64_decode
+        ?>
+
+        <img src="<?php echo $base64string ?>" style="width:460px; height:260px; float:right; padding:20px;"><br><br>
+        <!--- <canvas id="mycanvas" width="900" height="900">
+        </canvas>
+        <script type="text/javascript">
+        var canvas = document.getElementById('mycanvas');
+        var ctx = canvas.getContext('2d');
+        var myImage = new Image();
+        myImage.src = "base_64";
+        ctx.drawImage(myImage, 0, 0);*/
+        </script> -->
         <?php 
                 }
             }

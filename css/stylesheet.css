@@ -3,7 +3,7 @@
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: rgba(68, 67, 67, 0.699);
+    background-color: palevioletred;
 }
 
 ul.sidenav {
@@ -100,7 +100,7 @@ div.content {
   
   /* Set a style for the submit button */
   .registerbtn {
-    background-color: #4CAF50;
+    background-color: #1ca1c2;
     color: white;
     padding: 16px 20px;
     margin: 8px 0;
