@@ -10,16 +10,20 @@
 
 <body>
 
-    <ul class="sidenav">
-        <li><a href="index.php">home</a></li>
-        <li><a href="#galery">gallery</a></li>
-        <li><a href="#effects">effects</a></li>
-        <li style="float:right"><a href="login.php">log in<a href="register.php">register</a></a></li>
-    </ul>
+    <div id="navbar">
+        <div id="navbar-left">
+            <a href="index.php">home</a>
+            <a href="gallery.php">gallery</a>
+            <a href="#effects">effects</a>
+        </div>
+        <div id="navbar-right">
+            <a href="login.php">log in<a href="register.php" class="active">register</a></a>
+        </div>
+    </div>
 
     <div class="content">
         <form method="post" action="registration.php">
-            <div class="container">
+            <div class="container-register">
                 <h1>Register</h1>
                 <p>Please fill in this form to create an account.</p>
                 <hr>
@@ -37,7 +41,7 @@
                 <input type="password" placeholder="Repeat Password" name="password-repeat" id="password-repeat"
                     required>
                 <hr>
-                <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+                <!---<p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>--->
 
                 <button type="submit" class="registerbtn" name="register">Register</button>
             </div>

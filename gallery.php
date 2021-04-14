@@ -18,15 +18,20 @@ include_once("config.php");
 </head>
 
 <body>
-    <ul class="sidenav">
-        <li><a href="index.php">home</a></li>
-        <li class="active"><a href="gallery.php">gallery</a></li>
-        <li><a href="#effects">effects</a></li>
-        <li style="float:right"><a href="login.php">log in<a href="register.php">register</a></a></li>
-    </ul>
+    <div id="navbar">
+        <div id="navbar-left">
+            <a href="index.php">home</a>
+            <a href="gallery.php" class="active">gallery</a>
+            <a href="#effects">effects</a>
+        </div>
+        <div id="navbar-right">
+            <a href="login.php">log in<a href="register.php">register</a></a>
+        </div>
+    </div>
 
     <!-- Page Content -->
     <div class="container">
+        <p style="padding-left:20px;">Sort by:</p>
         <?php 
             $sql= "SELECT * FROM gallery";
             $db_conn = Config:: connect();
@@ -44,16 +49,9 @@ include_once("config.php");
                     //$data = base64_decode
         ?>
 
-        <img src="<?php echo $base64string ?>" style="width:460px; height:260px; float:right; padding:20px;"><br><br>
-        <!--- <canvas id="mycanvas" width="900" height="900">
-        </canvas>
-        <script type="text/javascript">
-        var canvas = document.getElementById('mycanvas');
-        var ctx = canvas.getContext('2d');
-        var myImage = new Image();
-        myImage.src = "base_64";
-        ctx.drawImage(myImage, 0, 0);*/
-        </script> -->
+
+        <img class="img-gallery" src="<?php echo $base64string ?>"></img>
+
         <?php 
                 }
             }

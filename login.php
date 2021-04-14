@@ -10,16 +10,20 @@
 
 <body>
 
-    <ul class="sidenav">
-        <li><a href="index.php">home</a></li>
-        <li><a href="#galery">gallery</a></li>
-        <li><a href="#effects">effects</a></li>
-        <li style="float:right"><a href="login.php" name="login">log in<a href="register.php">register</a></a></li>
-    </ul>
+    <div id="navbar">
+        <div id="navbar-left">
+            <a href="index.php">home</a>
+            <a href="gallery.php">gallery</a>
+            <a href="#effects">effects</a>
+        </div>
+        <div id="navbar-right">
+            <a href="login.php" class="active">log in<a href="register.php">register</a></a>
+        </div>
+    </div>
 
     <div class="content">
         <form method="post" action="registration.php">
-            <div class="container">
+            <div class="container-register">
                 <h1>Login</h1>
                 <p>Please fill in this form to create an account.</p>
                 <hr>

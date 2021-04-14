@@ -11,30 +11,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
     <script type="text/javascript" src="interface.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js"></script>
 </head>
 
 <body>
-    <ul class="sidenav">
-        <li class="active"><a href="#home">home</a></li>
-        <li><a href="gallery.php">gallery</a></li>
-        <li><a href="#effects">effects</a></li>
-        <li style="float:right"><a href="login.php">log in<a href="register.php">register</a></a></li>
-    </ul>
-    <div class="container">
-        <h2>Create your own object</h2>
-        <button id="btndownload">Download Image</button>
-        <div>
-            <input type="button" onclick="uploadImage()" value="Upload Image to Gallery" />
+    <div id="navbar">
+        <div id="navbar-left">
+            <a href="index.php" class="active">home</a>
+            <a href="gallery.php">gallery</a>
+            <a href="#effects">effects</a>
         </div>
+        <div id="navbar-right">
+            <a href="login.php">log in<a href="register.php">register</a></a>
+        </div>
+    </div>
+    <div class="container">
+        <h2 style="color:white; font-size: 1.6em;">Create your own object</h2>
 
         <form method="post" accept-charset="utf-8" name="form1">
             <input name="hidden_data" id='hidden_data' type="hidden" />
         </form>
-
         <div id="figure-canvas"></div>
         <form action="/" method="post" enctype="multipart/form-data" id="form">
-            <div class="slidecontainer">
+            <div class="slidecontainer" id="style-scroll">
                 <p>Sides:</p>
                 <input type="range" id="slide" min="0" max="100" value="2" class="slider" oninput="loadValue(this, 0)">
                 <span class="slider-value"></span>
@@ -88,7 +87,16 @@
                 <span class="slider-value"></span>
             </div>
         </form>
+        <div>
+            <button id="btnDownloadPng" class="cmd-btn">Download PNG</button>
+            <button id="btnDownloadJpg" class="cmd-btn">Download JPG</button>
+            <button id="btnDownloadPdf" class="cmd-btn">Download PDF</button>
+            <div style="float:left;">
+                <input type="button" class="cmd-btn" onclick="uploadImage()" value="Upload Image to Gallery" />
+            </div>
+        </div>
     </div>
+
     <script>
     let sliderCount = document.getElementsByClassName("slider").length;
     console.log(sliderCount + "slidercnt");
