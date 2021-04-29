@@ -1,144 +1,80 @@
-/*window.onload = function () {
-    document.getElementById("slidercontainer").style.display = "block";
-}*/
+class Shape {
+    constructor(sides, weight, radius, nobjects, colorR, colorG, colorB,
+        satColor, lightColor, xPos, yPos, spread, rotateVal, bgrColorR, bgrColorG,
+        bgrColorB, bgrSat, bgrLight, bgrTransp, type) {
+        this.sides = sides;
+        this.weight = weight;
+        this.radius = radius;
+        this.nobjects = nobjects;
+        this.colorR = colorR;
+        this.colorG = colorG;
+        this.colorB = colorB;
+        this.satColor = satColor;
+        this.lightColor = lightColor;
+        this.xPos = xPos;
+        this.yPos = yPos;
+        this.spread = spread;
+        this.rotateVal = rotateVal;
+        this.bgrColorR = bgrColorR;
+        this.bgrColorG = bgrColorG;
+        this.bgrColorB = bgrColorB;
+        this.bgrSat = bgrSat;
+        this.bgrLight = bgrLight;
+        this.bgrTransp = bgrTransp;
+        this.allObjects = [];
+        this.type = type;
+    }
 
-/*$(document).ready(function () {
-    console.log("read");
-    $(document).on('.onchange', '.refresher', function () {
-        $.ajax({
-            url: 'index.html',
-            method: "GET",
-            dataType: 'json',
-            success: function (response) {
-                $('#figure-canvas').html(response);
+    displayFigures() {
+        let figures = [];
+        let flag = 0;
+        function sketch(p) {
+            p.setup = function () {
+                var canvaSizeW = 850;
+                var canvaSizeH = 500;
+                if (flag <= 1) {
+                    p.createCanvas(canvaSizeW, canvaSizeH);
+                    flag += 1;
+                }
+                else {
+                    var list = document.getElementById("figure-canvas");
+                    list.removeChild(list.childNodes[0]);
+                    //if(alfa < 100){ list.removeChild(list.childNodes[0]); }
+                    p.strokeWeight(4);
+                    p.stroke(51);
+                    p.createCanvas(canvaSizeW, canvaSizeH);
+
+                    //p.createCanvas(945, 544);
+                }
             }
-        });
-    });
 
-});*/
+            p.draw = function () {
+                p.background(bgrColorR, bgrColorG, bgrColorB, bgrTransp);//Last one: TRANSPARENT 
+                // console.log("W" + weight + "Pos " + "X" + xPos + "Y " + yPos + "R " + radius + "Points " + nobjects + "Sides" + sides + "Spread" + spread);
+                //call(0.5, 0.5, 0, 0, 16, 5, 4, 1, 250, 0, 0, 0, 0);
 
-function downloadURI(uri, name) {
-    var link = document.createElement("a");
-
-    link.download = name;
-    link.href = uri;
-    document.body.appendChild(link);
-    link.click();
-}
-
-document.getElementById("btnDownloadPng").onclick = function downloadPNG() {
-    var c0 = document.getElementById('defaultCanvas0');
-    var c1 = document.getElementById('defaultCanvas1');
-    var c2 = document.getElementById('defaultCanvas2');
-    var c = null;
-    if (c0 !== null) {
-        c = c0;
-    }
-    else if (c1 !== null) {
-        c = c1;
-    }
-    else {
-        c = c2;
-    }
-    var myImage = c.toDataURL();
-    downloadURI(myImage, "lineart.png");
-
-    //download SVG
-    /*var imgdata = c.getSerializedSvg();
-    var sth = c.getSvg();
-    console.log(imgdata);
-    console.log(sth)*/
-}
-
-document.getElementById("btnDownloadJpg").onclick = function downloadJPG() {
-    var c0 = document.getElementById('defaultCanvas0');
-    var c1 = document.getElementById('defaultCanvas1');
-    var c2 = document.getElementById('defaultCanvas2');
-    var c = null;
-    if (c0 !== null) {
-        c = c0;
-    }
-    else if (c1 !== null) {
-        c = c1;
-    }
-    else {
-        c = c2;
-    }
-    var myImage = c.toDataURL();
-    downloadURI(myImage, "lineart.jpg");
-}
-
-document.getElementById("btnDownloadPdf").onclick = function downloadPDF() {
-    var c0 = document.getElementById('defaultCanvas0');
-    var c1 = document.getElementById('defaultCanvas1');
-    var c2 = document.getElementById('defaultCanvas2');
-    var c = null;
-    if (c0 !== null) {
-        c = c0;
-    }
-    else if (c1 !== null) {
-        c = c1;
-    }
-    else {
-        c = c2;
-    }
-
-    //download PDF
-    var imgData = c.toDataURL("image/jpeg", 1.0);
-    var pdf = new jsPDF();
-
-    pdf.addImage(imgData, 'JPEG', 5, 10, 200, 120);
-    pdf.save("lineart.pdf");
-}
+                // for (let c = 1; c <= 2; c++) {
+                //if (c > 1)
+                //  call(xPos - 0.5 + (c * 0.04), yPos - 0.5, 0, 0, radius, sides, nobjects, weight, colorR, colorG, colorB, spread, rotateVal, type);
+                //else
+                call(xPos, yPos, 0, 0, radius, sides, nobjects, weight, colorR, colorG, colorB, spread, rotateVal, type);
+                //}
 
 
-let figures = [];
-let flag = 0;
-
-function displayFigures() {
-    function sketch(p) {
-
-        p.setup = function () {
-            var canvaSizeW = 850;
-            var canvaSizeH = 500;
-            if (flag <= 1) {
-                p.createCanvas(canvaSizeW, canvaSizeH);
-                flag += 1;
+                //save();
+                p.noLoop();
+                //call(0, 0, 0, 0, 20, 3, 4, 1, 250, 100, 10, 0, 0);
+                //call(0.5, 0.5, 0, 0, 70, 7, 3);
+                //call(0.7, 0.5, 0, 0, 10, 14, 5);
+                //call(0.9, 0.5, 0, 0, 70, 4, 3);
             }
-            else {
-                var list = document.getElementById("figure-canvas");
-                list.removeChild(list.childNodes[0]);
-                //if(alfa < 100){ list.removeChild(list.childNodes[0]); }
-                p.strokeWeight(4);
-                p.stroke(51);
-                p.createCanvas(canvaSizeW, canvaSizeH);
 
-                //p.createCanvas(945, 544);
-            }
-        }
-
-        p.draw = function () {
-            console.log(bgrcolor);
-            p.background(100, 100, 100, 250);//Last one: TRANSPARENT
-            console.log("W" + weight + "Pos " + "X" + xPos + "Y " + yPos + "R " + radius + "Points " + nobjects + "Sides" + sides + "Spread" + spread);
-
-            call(xPos, yPos, 0, 0, radius, sides, nobjects, weight, colorR, colorG, colorB, spread, rotateVal);
-            //save();
-            p.noLoop();
-            //call(0.3, 0.5, 0, 0, 80, 5, 4);
-            //call(0.5, 0.5, 0, 0, 70, 7, 3);
-            //call(0.7, 0.5, 0, 0, 10, 14, 5);
-            //call(0.9, 0.5, 0, 0, 70, 4, 3);
-        }
-
-        function call(w, h, x, y, radius, nobjects, sides, weight, colorR, colorG, colorB, spread, rotateVal) {
-            p.push();
-            //position of figure
-            p.translate(p.width * w, p.height * h);
-            //rotation by x
-            p.rotate(rotateVal);
-
-            for (var i = 1; i <= sides; i++) {
+            function call(w, h, x, y, radius, nobjects, sides, weight, colorR, colorG, colorB, spread, rotateVal, type) {
+                p.push();
+                //position of figure
+                p.translate(p.width * w, p.height * h);
+                //rotation by x
+                p.rotate(rotateVal);
 
                 p.noFill();
                 //color
@@ -146,122 +82,95 @@ function displayFigures() {
                 //weight
                 p.strokeWeight(weight);
 
-                //p.angleMode(p.DEGREES); // Change the mode to DEGREES
-                let a = p.atan(p.PI + p.PI / 3.0);
-                //spread of figures
-                p.translate(spread, -spread);
-                p.push();
-                p.rotate(a);
+                if (type == "circle") {
+                    p.circle(5, 5, 200);
+                }
+                else {
+                    for (var i = 1; i <= sides; i++) {
 
-                polygon(x, y, i * radius, nobjects);//i for rotate position of figure
+                        //p.angleMode(p.DEGREES); // Change the mode to DEGREES
+                        let a = p.atan(p.PI + p.PI / 3.0);
+                        //spread of figures
+                        p.translate(spread, -spread);
+                        p.push();
+                        p.rotate(a);
+
+                        polygon(x, y, i * radius, nobjects);//i for rotate position of figure
+
+                    }
+                    p.pop();
+                }
             }
-            p.pop();
-        }
 
-        function polygon(x, y, radius, nobjects) {
-            var angle = p.TWO_PI / nobjects;
-            p.beginShape();
-            for (let a = 0; a < p.TWO_PI; a += angle) {
-                let sx = x + p.cos(a) * radius;
-                let sy = y + p.sin(a) * radius;
-                p.vertex(sx, sy);
+            function polygon(x, y, radius, nobjects) {
+                var angle = p.TWO_PI / nobjects;
+                p.beginShape();
+                for (let a = 0; a < p.TWO_PI; a += angle) {
+                    let sx = x + p.cos(a) * radius;
+                    let sy = y + p.sin(a) * radius;
+                    p.vertex(sx, sy);
+                }
+                p.endShape(p.CLOSE);
             }
-            p.endShape(p.CLOSE);
+
+            window.onresize = function () {
+                // assigns new values for width and height variables
+                var w = window.innerWidth * 0.62;
+                var h = window.innerHeight * 0.82;
+
+                console.log(w + " " + h)
+
+                p.resizeCanvas(w, h);
+                //p.scale(0.1);
+                var canvaSize = document.getElementById("figure-canvas");
+                canvaSize.setAttribute("style", "height:" + h + "px");
+                canvaSize.setAttribute("style", "width:" + w + "px");
+
+            }
         }
+        var f = new p5(sketch, 'figure-canvas');
+        figures.push(f);
+    };
+}
 
-        window.onresize = function () {
-            // assigns new values for width and height variables
-            var w = window.innerWidth * 0.62;
-            var h = window.innerHeight * 0.82;
-
-            console.log(w + " " + h)
-
-            p.resizeCanvas(w, h);
-            p.scale(0.1);
-            var canvaSize = document.getElementById("figure-canvas");
-            canvaSize.setAttribute("style", "height:" + h + "px");
-            canvaSize.setAttribute("style", "width:" + w + "px");
-
-        }
-    }
-    var f = new p5(sketch, 'figure-canvas');
-    figures.push(f);
-};
+let allInstances = [];
 
 $(document).on("change", function () {
-    displayFigures();
+    var figure = new Shape(sides, weight, radius, nobjects, colorR, colorG, colorB,
+        satColor, lightColor, xPos, yPos, spread, rotateVal, bgrColorR, bgrColorG,
+        bgrColorB, bgrSat, bgrLight, bgrTransp);
+    console.log(figure);
+    figure.displayFigures();
+    allInstances.push(figure);
+    //console.log(allInstances.length);
+    //for (var i = 0; i < allInstances.length; i++) {
+    //console.log("HA" + allInstances[i].sides);
+    //}
 });
 
 
 /*SLIDER move value*/
 $(document).ready(function () {
-    displayFigures();
+    var figure = new Shape(sides, weight, radius, nobjects, colorR, colorG, colorB,
+        satColor, lightColor, xPos, yPos, spread, rotateVal, bgrColorR, bgrColorG,
+        bgrColorB, bgrSat, bgrLight, bgrTransp);
+    console.log(figure);
+    figure.displayFigures();
 });
 
-function uploadImage() {
-    //debugger;
-    var c0 = document.getElementById('defaultCanvas0');
-    var c1 = document.getElementById('defaultCanvas1');
-    var c2 = document.getElementById('defaultCanvas2');
-    var c = null;
-    if (c0 !== null) {
-        c = c0;
-    }
-    else if (c1 !== null) {
-        c = c1;
-    }
-    else {
-        c = c2;
-    }
-    var dataUrl = c.toDataURL();
-    console.log("DATA:" + dataUrl);
-
-    $.ajax({
-        type: "POST",
-        url: "http://localhost/LineArt/uploadImage.php",
-        data: { image: dataUrl }
-    })
-        .done(function (respond) { console.log("done: " + respond); })
-        .fail(function (respond) { console.log("fail"); })
-        .always(function (respond) { console.log("always"); })
-};
-
-/* CANVAS resize */
-
-/*function resizeCanvas() {
-    var c0 = document.getElementById('defaultCanvas0');
-    var c1 = document.getElementById('defaultCanvas1');
-    var canvas = null;
-    if (c0 !== null) {
-        canvas = c0;
-    }
-    else {
-        canvas = c1;
-    }
-    if (canvas.width < window.innerWidth) {
-        canvas.width = window.innerWidth;
-    }
-
-    if (canvas.height < window.innerHeight) {
-        canvas.height = window.innerHeight;
-    }
-}*/
+/*document.getElementsByClassName(".cmd-btn").onclick = function () {
+    debugger;
+    var figure = new Shape(sides, weight, radius, nobjects, colorR, colorG, colorB,
+        satColor, lightColor, xPos, yPos, spread, rotateVal, bgrColorR, bgrColorG,
+        bgrColorB, bgrSat, bgrLight, bgrTransp);
+    console.log(figure);
+    figure.displayFigures();
+};*/
 
 
-/*
-window.onload = resize;
-window.onresize = resize;*/
-
-
-/*
-//////  TO-DO ////////
-1) Color picker for background, lines
-2) Transparent background
-3) Create more than one object
-4) Slide menu for download
-5) Burger menu for navigation
-6) Fix login/register form
-7) Upload image from folder into database
-8) Choose figure image to place on photo
-9) Fix users
-*/
+$(".cmd-btn").click(function () {
+    var figure = new Shape(sides, weight, radius, nobjects, colorR, colorG, colorB,
+        satColor, lightColor, xPos, yPos, spread, rotateVal, bgrColorR, bgrColorG,
+        bgrColorB, bgrSat, bgrLight, bgrTransp);
+    figure.displayFigures();
+});
