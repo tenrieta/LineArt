@@ -1,2 +1,2 @@
 # LineArt
-Final Project for university - bachelor "Computer science"
+Web App Editor for Creating unique Geometry Objects and Images. 
